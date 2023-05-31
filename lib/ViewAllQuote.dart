@@ -31,7 +31,7 @@ class ViewAllQuote extends StatelessWidget {
                                     height: 20,
                                   ),
                                   Text(
-                                    '~ ${_allquote.getQuoteList[index]['author']!}',
+                                    '~ ${_allquote.getQuoteList[index]['author']}',
                                     textAlign: TextAlign.end,
                                   )
                                 ],
