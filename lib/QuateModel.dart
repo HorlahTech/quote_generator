@@ -122,6 +122,7 @@ class QuoteModel {
       "author": "Unknown"
     }
   ];
+
   List<Map<String, String>> get getQuoteList => _quotes;
 
   void nextQuote() {
@@ -164,29 +165,31 @@ class QuoteModel {
   }
 }
 
+class QuotModel {
+  final quote, author, tags, id;
 
+  QuotModel({
+    required this.quote,
+    required this.author,
+    required this.tags,
+    required this.id,
+  });
 
+  factory QuotModel.fromJson(Map<String, dynamic> data) {
+    return QuotModel(
+        id: data['_id'],
+        quote: data['content'],
+        author: data['author'],
+        tags: data['tags']);
+  }
 
-
-
-class QuotModel{
-final quote, author, tags, id;
-QuotModel( {required this.quote, required this.author, required this.tags, required this.id,} );
-factory QuotModel.fromJson(Map<String, dynamic> data){
-  return QuotModel(
-      id : data['_id'],
-      quote : data['content'],
-    author: data['author'],
-    tags: data['tags']
-  );
-
-}
-factory QuotModel.quoteListfromJson(List<Map<String, dynamic>> data, int index){
-  return QuotModel(
-      quote : data[index]['content'],
-    author: data[index]['author'],
-    tags: data[index]['tags'], id: data[index]['id']
-  );
-
-}
+  static List<QuotModel> quoteListfromJson(List<dynamic> dataList) {
+    return dataList
+        .map((data) => QuotModel(
+            quote: data['content'],
+            author: data['author'],
+            tags: data['tags'],
+            id: data['_id']))
+        .toList();
+  }
 }
