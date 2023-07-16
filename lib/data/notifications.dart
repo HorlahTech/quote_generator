@@ -1,11 +1,11 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
-import 'package:quote_generator/quote_repo.dart';
+import 'package:quote_generator/data/quote_repo.dart';
 
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
-import 'QuateModel.dart';
+import '../models/QuateModel.dart';
 
 class NotificationsService{
 

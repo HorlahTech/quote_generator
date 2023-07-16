@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:quote_generator/QuateModel.dart';
+import 'package:quote_generator/models/QuateModel.dart';
 
 class QuoteRepo {
   QuoteRepo._();

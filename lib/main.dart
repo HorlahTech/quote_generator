@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:glassmorphism/glassmorphism.dart';
-import 'package:quote_generator/ViewAllQuote.dart';
+import 'package:quote_generator/presentation/ViewAllQuote.dart';
 import 'package:quote_generator/common_widget/colors.dart';
-import 'package:quote_generator/notifications.dart';
-import 'package:quote_generator/quote_controller.dart';
-import 'package:quote_generator/quote_repo.dart';
+import 'package:quote_generator/data/notifications.dart';
+import 'package:quote_generator/controllers/quote_controller.dart';
+import 'package:quote_generator/data/quote_repo.dart';
 
 import 'common_widget/styles.dart';
-import 'home_page.dart';
+import 'presentation/home_page.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 

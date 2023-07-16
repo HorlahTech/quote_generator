@@ -4,13 +4,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:quote_generator/common_widget/alerts.dart';
-import 'package:quote_generator/quote_repo.dart';
+import 'package:quote_generator/data/quote_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
-import 'QuateModel.dart';
-import 'common_widget/colors.dart';
-import 'common_widget/styles.dart';
+import '../models/QuateModel.dart';
+import '../common_widget/colors.dart';
+import '../common_widget/styles.dart';
 
 class QuoteController extends StateNotifier<AsyncValue<void>> {
   QuoteController() : super(const AsyncData(null));

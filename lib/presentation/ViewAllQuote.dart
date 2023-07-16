@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quote_generator/common_widget/alerts.dart';
 import 'package:quote_generator/common_widget/extentions.dart';
-import 'package:quote_generator/onError.dart';
-import 'package:quote_generator/quote_controller.dart';
+import 'package:quote_generator/presentation/onError.dart';
+import 'package:quote_generator/controllers/quote_controller.dart';
 
-import 'common_widget/colors.dart';
+import '../common_widget/colors.dart';
 
 class ViewAllQuote extends ConsumerWidget {
   @override

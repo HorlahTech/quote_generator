@@ -4,12 +4,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:quote_generator/common_widget/colors.dart';
 import 'package:quote_generator/common_widget/extentions.dart';
-import 'package:quote_generator/onError.dart';
-import 'package:quote_generator/quote_controller.dart';
+import 'package:quote_generator/presentation/onError.dart';
+import 'package:quote_generator/controllers/quote_controller.dart';
 import 'package:screenshot/screenshot.dart';
 import 'ViewAllQuote.dart';
-import 'common_widget/styles.dart';
-import 'notifications.dart';
+import '../common_widget/styles.dart';
+import '../data/notifications.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({Key? key}) : super(key: key);
