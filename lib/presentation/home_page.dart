@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:quote_generator/common_widget/colors.dart';
+
 import 'package:quote_generator/common_widget/extentions.dart';
 import 'package:quote_generator/presentation/onError.dart';
 import 'package:quote_generator/controllers/quote_controller.dart';
@@ -44,142 +45,133 @@ class _HomePageState extends ConsumerState<HomePage> {
     });
     return Scaffold(
         body: SafeArea(
-          child: quote.when(
-              data: (data) =>
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      GlassmorphicFlexContainer(
-                        margin: const EdgeInsets.symmetric(horizontal: 20),
-                        borderRadius: 10,
-                        blur: 10,
-                        padding: const EdgeInsets.all(20),
-                        border: 2,
-                        linearGradient: linearGradient,
-                        borderGradient: linearGradient2,
-                        child: Column(
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.all(8.0),
-                              height: 40,
-                              width: double.infinity,
-                              color: AppColors.purple,
-                              padding: const EdgeInsets.only(
-                                  top: 8.0, left: 12),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  const Text(
-                                    'Tags: ',
-                                    style: TextStyle(
-                                        fontSize: 20, color: AppColors.white),
-                                    textAlign: TextAlign.start,
-                                  ),
-                                  ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: data.tags.length,
-                                    shrinkWrap: true,
-                                    itemBuilder: (BuildContext context,
-                                        int index) {
-                                      return Text('${data.tags[index]},',
-                                          style: const TextStyle(
-                                              fontSize: 20,
-                                              color: AppColors.white));
-                                    },
-                                  ),
-                                ],
+      child: quote.when(
+          data: (data) => Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GlassmorphicFlexContainer(
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    borderRadius: 10,
+                    blur: 10,
+                    padding: const EdgeInsets.all(20),
+                    border: 2,
+                    linearGradient: linearGradient,
+                    borderGradient: linearGradient2,
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.all(8.0),
+                          height: 40,
+                          width: double.infinity,
+                          color: AppColors.purple,
+                          padding: const EdgeInsets.only(top: 8.0, left: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              const Text(
+                                'Tags: ',
+                                style: TextStyle(),
+                                textAlign: TextAlign.start,
                               ),
-                            ),
-                            const SizedBox(
-                              height: 150,
-                            ),
-                            Text(
-                              '~ ${data.author}',
-                              textAlign: TextAlign.center,
-                              style: black16,
-                            ),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                data.quote,
-                                style: black16,
-                                textAlign: TextAlign.center,
+                              ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: data.tags.length,
+                                shrinkWrap: true,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Text('${data.tags[index]},',
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                      ));
+                                },
                               ),
-                            ),
-                            const Expanded(child: SizedBox.shrink()),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                IconButton(
-                                    onPressed: () {
-                                      state.copyText(
-                                          context: context, data: data);
-                                    },
-                                    icon: const Icon(Icons.copy)),
-                                IconButton(
-                                    onPressed: () {
-                                      state.screenshotQuote(
-                                          controller: screenshotController,
-                                          data: data,
-                                          context: context);
-                                    },
-                                    icon: const Icon(Icons.share)),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 100,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ElevatedButton(
-                              onPressed: isLoading
-                                  ? null
-                                  : () async {
-                                ref.invalidate(futureProvider);
-                              },
-                              child: const Padding(
-                                padding: EdgeInsets.all(20.0),
-                                child: Text(' Get Quote'),
-                              )),
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => ViewAllQuote()));
-                            },
-                            child: const Padding(
-                              padding: EdgeInsets.all(20.0),
-                              child: Text(' View all Quote'),
-                            ),
+                            ],
                           ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 70,
+                        ),
+                        const SizedBox(
+                          height: 150,
+                        ),
+                        Text(
+                          '~ ${data.author}',
+                          textAlign: TextAlign.center,
+                          style: black16,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            data.quote,
+                            style: black16,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        const Expanded(child: SizedBox.shrink()),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            IconButton(
+                                onPressed: () {
+                                  state.copyText(context: context, data: data);
+                                },
+                                icon: const Icon(Icons.copy)),
+                            IconButton(
+                                onPressed: () {
+                                  state.screenshotQuote(
+                                      controller: screenshotController,
+                                      data: data,
+                                      context: context);
+                                },
+                                icon: const Icon(Icons.share)),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 100,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      ElevatedButton(
+                          onPressed: isLoading
+                              ? null
+                              : () async {
+                                  ref.invalidate(futureProvider);
+                                },
+                          child: const Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Text(' Get Quote'),
+                          )),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => ViewAllQuote()));
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.all(20.0),
+                          child: Text(' View all Quote'),
+                        ),
                       ),
                     ],
                   ),
-              error: (stackTrace, error) =>
-                  OnErrorWidget(
-                    onPressed: () {
-                      ref.invalidate(futureProvider);
-                    },
+                  const SizedBox(
+                    height: 70,
                   ),
-              loading: () =>
-              const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.purple,
-                  ))),
-        ));
+                ],
+              ),
+          error: (stackTrace, error) => OnErrorWidget(
+                onPressed: () {
+                  ref.invalidate(futureProvider);
+                },
+              ),
+          loading: () =>
+              const Center(child: CircularProgressIndicator.adaptive())),
+    ));
   }
 }

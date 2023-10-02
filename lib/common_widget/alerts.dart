@@ -11,7 +11,6 @@ Future<void> showAlert(
     showDialog(
         context: context,
         builder: (_) => AlertDialog(
-              backgroundColor: AppColors.light,
               content: content,
               title: Text(
                 title,

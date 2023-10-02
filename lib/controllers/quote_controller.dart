@@ -38,8 +38,8 @@ class QuoteController extends StateNotifier<AsyncValue<void>> {
               Text(
                 '\u201C',
                 style: black100.copyWith(
-                    fontFamily: 'SpaceGrotesk',
-                    color: AppColors.white.withOpacity(0.2)),
+                  fontFamily: 'SpaceGrotesk',
+                ),
               ),
               Text(
                 data.quote,
@@ -49,8 +49,8 @@ class QuoteController extends StateNotifier<AsyncValue<void>> {
               Text(
                 '\u201D',
                 style: black100.copyWith(
-                    fontFamily: 'SpaceGrotesk',
-                    color: AppColors.white.withOpacity(0.2)),
+                  fontFamily: 'SpaceGrotesk',
+                ),
               ),
             ],
           ),
@@ -85,7 +85,6 @@ class QuoteController extends StateNotifier<AsyncValue<void>> {
     AsyncValue.guard(() async => {
           Clipboard.setData(ClipboardData(text: data.quote)),
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            backgroundColor: AppColors.purple,
             content: Text("Copied to Clipboard"),
           ))
         });
